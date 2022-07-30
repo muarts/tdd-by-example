@@ -4,23 +4,13 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class Money {
-
-    /**
-     * to-do:
-     * 1- $5 * $2 = $10
-     * 2- Make "amount" private
-     * 3- Dollar side effects?
-     * 4- Money rounding?
-     */
+public class MoneyTest {
 
     @Test
     public void testMultiplication() {
         Dollar five = new Dollar(5);
-        Dollar product = five.times(2);
-        assertEquals(product.amount, 10);
-        product = five.times(3);
-        assertEquals(product.amount, 15);
+        assertEquals(five.times(2), new Dollar(10));
+        assertEquals(five.times(3), new Dollar(15));
     }
 
 
