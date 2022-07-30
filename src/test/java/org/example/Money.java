@@ -1,7 +1,8 @@
 package org.example;
 
-import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
 
 public class Money {
 
@@ -22,9 +23,15 @@ public class Money {
         assertEquals(product.amount, 15);
     }
 
+
     /**
-     * Two of three strategies for quickly getting to green
-     * 1- Fake it -> Return a constant and gradually replace constants with variable until you have the real code.
-     * 2- Use to obvious implementation -> Type in the real implementation.
+     * Triangulation: We only generalize (finding a general solution) code
+     * when we have two examples or more.
      */
+    @Test
+    public void testEquality() {
+        assertTrue(new Dollar(5).equals(new Dollar(5)));
+        assertFalse(new Dollar(5).equals(new Dollar(6)));
+    }
+
 }
