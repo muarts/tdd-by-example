@@ -13,7 +13,6 @@ public class MoneyTest {
         assertEquals(five.times(3), new Dollar(15));
     }
 
-
     /**
      * Triangulation: We only generalize (finding a general solution) code
      * when we have two examples or more.
@@ -24,4 +23,10 @@ public class MoneyTest {
         assertFalse(new Dollar(5).equals(new Dollar(6)));
     }
 
+    @Test
+    public void testFrancMultiplication() {
+        Franc five = new Franc(5);
+        assertEquals(five.times(2), new Franc(10));
+        assertEquals(five.times(3), new Franc(15));
+    }
 }
