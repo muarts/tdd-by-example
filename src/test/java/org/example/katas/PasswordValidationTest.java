@@ -2,6 +2,7 @@ package org.example.katas;
 
 import org.testng.annotations.Test;
 
+import static org.example.katas.constants.Keywords.*;
 import static org.testng.Assert.assertEquals;
 
 public class PasswordValidationTest {
@@ -17,42 +18,42 @@ public class PasswordValidationTest {
     public void testMustBeAtLeastEightCharactersLong() {
         PasswordValidation pw = new PasswordValidation("Pas!12");
         String message = pw.validatePassword();
-        assertEquals(message, "Password must be at least 8 characters");
+        assertEquals(message, MIN_EIGHT_CHARS_ERROR);
     }
 
     @Test
     public void testMustContainAtLeastTwoNumbers() {
         PasswordValidation pw = new PasswordValidation("pas$Word");
         String message = pw.validatePassword();
-        assertEquals(message, "The password must contain at least 2 numbers");
+        assertEquals(message, MIN_TWO_NUMS_ERROR);
     }
 
     @Test
     public void testHandleMultipleValidationErrors() {
         PasswordValidation pw = new PasswordValidation("paS#1");
         String message = pw.validatePassword();
-        assertEquals(message, "Password must be at least 8 characters\nThe password must contain at least 2 numbers");
+        assertEquals(message, MULTIPLE_ERROR);
     }
 
     @Test
     public void testMustContainAtLeastOneCapitalLetter() {
         PasswordValidation pw = new PasswordValidation("pass#ord123");
         String message = pw.validatePassword();
-        assertEquals(message, "Password must contain at least one capital letter");
+        assertEquals(message, MIN_ONE_CAPITAL_LETTER_ERROR);
     }
 
     @Test
     public void testMustContainAtLeastOneSpecialCharacter() {
         PasswordValidation pw = new PasswordValidation("ValidPassword123");
         String message = pw.validatePassword();
-        assertEquals(message, "Password must contain at least one special character");
+        assertEquals(message, MIN_ONE_SPECIAL_CHAR_ERROR);
     }
 
     @Test
     public void testPasswordFullFillsAllRequirements() {
         PasswordValidation pwd = new PasswordValidation("PassWord123$");
         String message = pwd.validatePassword();
-        assertEquals(message, "User created successfully");
+        assertEquals(message, SUCCESS_MESSAGE);
     }
 
 }
