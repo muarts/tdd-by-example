@@ -24,7 +24,7 @@ public class MoneyTest {
 
     @Test
     public void testFrancMultiplication() {
-        Franc five = Money.franc(5);
+        Money five = Money.franc(5);
         assertEquals(five.times(2), Money.franc(10));
         assertEquals(five.times(3), Money.franc(15));
     }
