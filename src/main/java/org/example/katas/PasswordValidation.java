@@ -4,8 +4,9 @@ public class PasswordValidation {
 
     private String password;
     private String message = "";
-    private String digits = "0123456789";
-    private String specialCharacters = "!@#$%^&*()_+";
+    private static final String digits = "0123456789";
+    private static final String specialCharacters = "!@#$%^&*()_+";
+    private static final String capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private int numberOfDigits;
     private int numberOfCapitalLetters;
     private int numberOfSpecialCharacters;
@@ -32,7 +33,7 @@ public class PasswordValidation {
     public void checkIfPasswordContainsRequiredCharactersInSufficientAmount() {
         String[] characters = password.split("");
         for (String character : characters) {
-            if (Character.isUpperCase(character.charAt(0))) {
+            if (capitalLetters.contains(character)) {
                 numberOfCapitalLetters++;
             }
             if (specialCharacters.contains(character)) {
