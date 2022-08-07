@@ -20,4 +20,7 @@ public class Product {
         return barcode;
     }
 
+    public Double getAmount() {
+        return amount;
+    }
 }

@@ -1,6 +1,10 @@
 package org.example.katas.salekatav2;
 
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -39,6 +43,23 @@ public class ProductDBTest {
     public void testEmptyBarcodeException() {
         ProductDB productDB = new ProductDB();
         productDB.scan("");
+    }
+
+    @Test
+    public void testTotalPriceOfScannedProducts() {
+        // Arrange
+        ProductDB productDB = new ProductDB();
+        Product productOne = new Product("12345", "$", 7.25);
+        Product productTwo = new Product("23456", "$", 12.50);
+        Product productThree = new Product("44444", "$", 14.50);
+        List<Product> products = new ArrayList<>();
+        products.add(productOne);
+        products.add(productTwo);
+        products.add(productThree);
+        // Act
+        String totalPrice = productDB.total(products);
+        // Assert
+        assertThat(totalPrice, equalTo("$34.25"));
     }
 
 }
