@@ -17,26 +17,18 @@ public class ProductDB {
     }
 
     public Product scan(String barcode) {
-        throwExceptionIfBarcodeIsEmpty(barcode);
+        if (barcode.equals("")) {
+            throw new RuntimeException("Error: empty barcode");
+        }
         Product productUnderSearch = products
                 .stream()
                 .filter(product -> product.getBarcode().equals(barcode))
                 .findAny()
                 .orElse(null);
-        throwExceptionIfProductUnderSearchIsNull(productUnderSearch);
-        return productUnderSearch;
-    }
-
-    public void throwExceptionIfBarcodeIsEmpty(String barcode) {
-        if (barcode.equals("")) {
-            throw new RuntimeException("Error: empty barcode");
-        }
-    }
-
-    public void throwExceptionIfProductUnderSearchIsNull(Product productUnderSearch) {
         if (productUnderSearch == null) {
             throw new RuntimeException("Error: barcode not found");
         }
+        return productUnderSearch;
     }
 
     public String total(List<Product> products) {
@@ -45,6 +37,6 @@ public class ProductDB {
             Product productUnderSearch = scan(product.getBarcode());
             sum += productUnderSearch.getAmount();
         }
-        return "$"+sum;
+        return "$" + sum;
     }
 }
