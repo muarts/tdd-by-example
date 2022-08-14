@@ -109,7 +109,7 @@ public class MoneyTest {
     }
 
     @Test
-    public void test() {
+    public void testSumTimes() {
         Expression fiveBucks = Money.dollar(5);
         Expression tenFrancs = Money.franc(10);
         Bank bank = new Bank();
